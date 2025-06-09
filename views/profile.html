@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <title>Profile - PetSquad</title>
+    <link rel="stylesheet" href="/css/profile.css" >
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    >
+    <script src="/js/profile.js"></script>
+  </head>
+  <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <i class="fas fa-paw"></i>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="logo">
+        <img
+          src="/images/pupsqd.png"
+          alt="PetSquad Logo"
+          class="logo-img"
+        >
+        <span class="logo-text">PetSquad</span>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="/" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/feed" class="nav-link">
+            <i class="fas fa-search"></i>
+            <span>Feed</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/petsquad" class="nav-link">
+            <i class="fas fa-robot"></i>
+            <span>PetSquad AI</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+          <a href="/profile" class="nav-link">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+      </ul>
+        <div class="nav-footer">
+        <p class="footer-text">
+          Contact us at:
+        </p>
+        <div class="navfooter-item">
+          <i class="fas fa-envelope"></i>
+          <span>pet_squad@yahoo.com</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (123) 456-7890</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Iasi, Romania</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fab fa-instagram"></i>
+          <span>@PetSquad</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Auth Forms (shown when not logged in) -->
+      <div class="auth-container" id="authContainer">
+        <div class="auth-card">
+          <div class="auth-header">
+            <h2>Join the PetSquad community</h2>
+            <p>Help reunite pets with their families</p>
+          </div>
+
+          <div class="auth-tabs">
+            <button class="tab-btn active" data-tab="login">Log in</button>
+            <button class="tab-btn" data-tab="signup">Sign up</button>
+          </div>
+
+          <!-- Login Form -->
+          <form class="auth-form active" id="loginForm">
+            <div class="form-group">
+              <label for="loginEmail">Email</label>
+              <input type="email" id="loginEmail" name="email" required >
+            </div>
+            <div class="form-group">
+              <label for="loginPassword">Password</label>
+              <div class="password-input-container">
+                <input
+                  type="password"
+                  id="loginPassword"
+                  name="password"
+                  required
+                >
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="loginPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group checkbox-group">
+              <label class="checkbox-label">
+                <input type="checkbox" id="keepSignedIn" name="keepSignedIn" >
+                <span class="checkmark"></span>
+                Keep me signed in
+              </label>
+            </div>
+            <button type="submit" class="auth-btn">Log in</button>
+            <p class="auth-link">
+              Don't have an account? <a href="#" data-tab="signup">Sign up</a>
+            </p>
+            <p class="forgot-link">
+              <a href="#" id="forgotPassword">Forgot password?</a>
+            </p>
+          </form>
+
+          <!-- Signup Form -->
+          <form class="auth-form" id="signupForm">
+            <div class="form-group">
+              <label for="signupFullName">Full Name</label>
+              <input type="text" id="signupFullName" name="fullName" required >
+            </div>
+            <div class="form-group">
+              <label for="signupUsername">Username</label>
+              <input type="text" id="signupUsername" name="username" required >
+            </div>
+            <div class="form-group">
+              <label for="signupEmail">Email</label>
+              <input type="email" id="signupEmail" name="email" required >
+            </div>
+            <div class="form-group">
+              <label for="signupPhone">Phone Number (Optional)</label>
+              <input type="tel" id="signupPhone" name="phoneNumber" >
+            </div>
+            <div class="form-group">
+              <label for="signupPassword">Password</label>
+              <div class="password-input-container">
+                <input
+                  type="password"
+                  id="signupPassword"
+                  name="password"
+                  required
+                >
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="signupPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="confirmPassword">Confirm Password</label>
+              <div class="password-input-container">
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  required
+                >
+                <button
+                  type="button"
+                  class="password-toggle"
+                  data-target="confirmPassword"
+                >
+                  <i class="fas fa-eye"></i>
+                </button>
+              </div>
+            </div>
+            <button type="submit" class="auth-btn">Create Account</button>
+            <p class="auth-link">
+              Already have an account? <a href="#" data-tab="login">Log in</a>
+            </p>
+          </form>
+        </div>
+      </div>
+
+      <!-- Profile Dashboard (shown when logged in) -->
+      <div
+        class="profile-container"
+        id="profileContainer"
+        style="display: none"
+      >
+        <!-- Profile Info Card -->
+        <div class="profile-card">
+          <div class="profile-header">
+            <div class="profile-info">
+              <h2 id="profileUsername">Username</h2>
+              <p>
+                <strong>Full Name:</strong>
+                <span id="profileFullName">John Doe</span>
+              </p>
+              <p>
+                <strong>Email:</strong>
+                <span id="profileEmail">john.doe@example.com</span>
+              </p>
+              <p>
+                <strong>Phone Number:</strong>
+                <span id="profilePhone">555-123-4567</span>
+              </p>
+            </div>
+            <button class="edit-btn" id="editProfileBtn">Edit Profile</button>
+          </div>
+        </div>
+
+        <!-- Profile Sections -->
+        <div class="profile-sections">
+          <!-- Posts and Alerts -->
+          <div class="section-item" id="postsSection">
+            <div class="section-header">
+              <i class="fas fa-newspaper"></i>
+              <span>Posts and Alerts</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content">
+              <p>View your own posts and the alerts you got on them</p>
+              <div id="userPosts" class="posts-grid">
+                <!-- Posts will be loaded here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Notifications & Alerts -->
+          <div class="section-item" id="notificationsSection">
+            <div class="section-header">
+              <i class="fas fa-bell"></i>
+              <span>Notifications &amp; Alerts</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content">
+              <div class="notifications-tabs">
+                <button class="notif-tab active" data-content="received">
+                  Received Alerts
+                </button>
+                <button class="notif-tab" data-content="preferences">
+                  Notification Preferences
+                </button>
+              </div>
+
+              <div class="notif-content active" id="receivedAlerts">
+                <div id="alertsList" class="alerts-list">
+                  <!-- Alerts will be loaded here -->
+                </div>
+              </div>
+
+              <div class="notif-content" id="preferences">
+                <h4>Preferences</h4>
+                <div class="preference-group">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="phoneNotifications" checked >
+                    <span class="toggle-slider"></span>
+                  </label>
+                  <div class="preference-info">
+                    <h5>Get ALERT notifications on phone number</h5>
+                    <div class="notification-methods">
+                      <label><input type="checkbox" checked > WhatsApp</label>
+                      <label
+                        ><input type="checkbox" checked > Text Messages</label
+                      >
+                    </div>
+                  </div>
+                </div>
+
+                <div class="preference-group">
+                  <label class="toggle-switch">
+                    <input type="checkbox" id="emailNotifications" checked >
+                    <span class="toggle-slider"></span>
+                  </label>
+                  <div class="preference-info">
+                    <h5>Get ALERT notifications on email</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Match History -->
+          <div class="section-item" id="matchSection">
+            <div class="section-header">
+              <i class="fas fa-history"></i>
+              <span>Match History</span>
+              <i class="fas fa-chevron-down"></i>
+            </div>
+            <div class="section-content">
+              <p>View the last matches our PetSquad found for your pet</p>
+              <div class="no-matches">
+                <p>No matches found yet</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logout -->
+          <div class="section-item" id="logoutSection">
+            <div class="section-header logout-header">
+              <i class="fas fa-sign-out-alt"></i>
+              <span>Logout</span>
+            </div>
+          </div>
+          <div class="section-item" id="deleteAccountSection">
+            <div class="section-header delete-header">
+              <i class="fas fa-trash-alt"></i>
+              <span>Delete Account</span>
+            </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div class="modal" id="editProfileModal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Edit Profile</h3>
+          <button class="modal-close" id="closeEditModal">&times;</button>
+        </div>
+        <form id="editProfileForm" class="edit-form">
+          <div class="form-group">
+            <label for="editFullName">Full Name</label>
+            <input type="text" id="editFullName" name="fullName" >
+          </div>
+          <div class="form-group">
+            <label for="editUsername">Username</label>
+            <input type="text" id="editUsername" name="username" >
+          </div>
+          <div class="form-group">
+            <label for="editEmail">Email</label>
+            <input type="email" id="editEmail" name="email" >
+          </div>
+          <div class="form-group">
+            <label for="editPhone">Phone Number</label>
+            <input type="tel" id="editPhone" name="phoneNumber" >
+          </div>
+
+          <div class="password-section">
+            <h4>Change Password</h4>
+            <div class="form-group">
+              <label for="currentPassword">Current Password</label>
+              <input
+                type="password"
+                id="currentPassword"
+                name="currentPassword"
+              >
+            </div>
+            <div class="form-group">
+              <label for="newPassword">New Password</label>
+              <input type="password" id="newPassword" name="newPassword" >
+            </div>
+            <div class="form-group">
+              <label for="confirmNewPassword">Confirm New Password</label>
+              <input
+                type="password"
+                id="confirmNewPassword"
+                name="confirmNewPassword"
+              >
+            </div>
+          </div>
+
+          <div class="modal-buttons">
+            <button type="button" class="btn-cancel" id="cancelEdit">
+              Cancel
+            </button>
+            <button type="submit" class="btn-save">Save Changes</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Edit Post Modal -->
+    <div class="modal" id="editPostModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Post</h3>
+                <button class="modal-close" id="closeEditPostModal">&times;</button>
+            </div>
+            <form class="post-form" id="editPostForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Tag</label>
+                    <div class="tag-selector">
+                        <label class="tag-option lost">
+                            <input type="radio" name="tag" value="lost" required>
+                            <span class="tag-label">
+                                <i class="fas fa-search"></i>
+                                Lost
+                            </span>
+                        </label>
+                        <label class="tag-option found">
+                            <input type="radio" name="tag" value="found" required>
+                            <span class="tag-label">
+                                <i class="fas fa-heart"></i>
+                                Found
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="editPetNameGroup">
+                    <label for="editPetName">Pet Name</label>
+                    <input type="text" id="editPetName" name="petName" placeholder="What's your pet's name?">
+                </div>
+
+                <div class="form-group">
+                    <label for="editLocation">Last Seen Location *</label>
+                    <input type="text" id="editLocation" name="location" placeholder="Where was the pet last seen?" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="editDate">Date *</label>
+                        <input type="date" id="editDate" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="editSize">Size *</label>
+                        <select id="editSize" name="size" required>
+                            <option value="">Select size</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="editBreed">Breed (Optional)</label>
+                    <input type="text" id="editBreed" name="breed" placeholder="e.g. Golden Retriever, Mixed breed">
+                </div>
+
+                <div class="form-group">
+                    <label for="editDescription">Description (Optional)</label>
+                    <textarea id="editDescription" name="description" rows="4" placeholder="Any additional details that might help..."></textarea>
+                </div>
+
+                <!-- Current Images Section -->
+                <div class="form-group">
+                    <label>Current Images</label>
+                    <div class="current-images" id="currentImagesEdit">
+                        <!-- Current images will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Add New Images Section -->
+                <div class="form-group">
+                    <label for="editImages">Add New Photos</label>
+                    <div class="image-upload">
+                        <input type="file" id="editImages" name="images" multiple accept="image/*" style="display: none;">
+                        <div class="upload-area" id="editUploadArea">
+                            <i class="fas fa-camera"></i>
+                            <p>Click to upload photos or drag and drop</p>
+                            <small>Up to 5 images (max 5MB each)</small>
+                        </div>
+                        <div class="image-preview" id="editImagePreview"></div>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="cancelEditPost">Cancel</button>
+                    <button type="submit" class="btn-post">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Success Modal for Reunited Pets -->
+    <div class="modal" id="reuniteModal">
+      <div class="modal-content success-modal">
+        <div class="confetti-container" id="confettiContainer"></div>
+        <div class="success-content">
+          <i class="fas fa-heart success-icon"></i>
+          <h3>Congratulations!</h3>
+          <p>We are happy that PetSquad reunited one more family!</p>
+          <button class="btn-success" id="closeReuniteModal">Continue</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Details - PetSquad</title>
+    <link rel="stylesheet" href="/css/post_detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/js/post_detail.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="post-header">
+            <button class="back-btn" onclick="goBack()">
+                <i class="fas fa-arrow-left"></i>
+                Back
+            </button>
+            <div class="post-meta">
+                <span class="username" id="postUsername">@username</span>
+                <span class="post-tag" id="postTag">Lost</span>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn alert-btn" id="alertBtn">
+                    <i class="fas fa-bell"></i>
+                    Alert
+                </button>
+                <div class="share-dropdown">
+                    <button class="action-btn share-btn" id="shareBtn">
+                        <i class="fas fa-share"></i>
+                        Share
+                    </button>
+                    <div class="share-menu" id="shareMenu">
+                        <button class="share-option" id="shareFacebook">
+                            <i class="fab fa-facebook"></i>
+                            Facebook
+                        </button>
+                        <button class="share-option" id="shareInstagram">
+                            <i class="fab fa-instagram"></i>
+                            Instagram
+                        </button>
+                        <button class="share-option" id="copyLink">
+                            <i class="fas fa-link"></i>
+                            Copy Link
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Image Gallery -->
+        <section class="image-gallery" id="imageGallery">
+            <div class="main-image">
+                <img src="" alt="Pet image" id="mainImage">
+                <button class="gallery-nav prev" id="prevBtn">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav next" id="nextBtn">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="image-thumbnails" id="thumbnails">
+                <!-- Thumbnails will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Post Details -->
+        <section class="post-details">
+            <div class="detail-card">
+                <h2 class="pet-name" id="petName">Pet Name</h2>
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <label>Location</label>
+                            <span id="petLocation">Location</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-calendar"></i>
+                        <div>
+                            <label>Date</label>
+                            <span id="petDate">Date</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-paw"></i>
+                        <div>
+                            <label>Breed</label>
+                            <span id="petBreed">Breed</span>
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fas fa-ruler"></i>
+                        <div>
+                            <label>Size</label>
+                            <span id="petSize">Size</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="description" id="description">
+                    <h3>Description</h3>
+                    <p id="petDescription">Description will be shown here...</p>
+                </div>
+                <div class="contact-info" id="contactInfo">
+                    <h3>Contact Information</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="ownerEmail">email@example.com</span>
+                        </div>
+                        <div class="contact-item" id="phoneContact" style="display: none;">
+                            <i class="fas fa-phone"></i>
+                            <span id="ownerPhone">+1234567890</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Fullscreen Image Modal -->
+    <div class="modal fullscreen-modal" id="fullscreenModal">
+        <div class="fullscreen-content">
+            <button class="modal-close" id="closeFullscreen">&times;</button>
+            <img src="" alt="Pet image" id="fullscreenImage">
+            <button class="fullscreen-nav prev" id="fullscreenPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="fullscreen-nav next" id="fullscreenNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="modal" id="alertModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Send Alert</h3>
+                <button class="modal-close" id="closeAlertModal">&times;</button>
+            </div>
+            <div class="alert-form">
+                <p>Send an alert to <strong id="alertRecipient">@username</strong> about this post.</p>
+                <textarea id="alertMessage" placeholder="Optional message..." rows="4"></textarea>
+                <div class="modal-buttons">
+                    <button class="btn-cancel" id="cancelAlert">Cancel</button>
+                    <button class="btn-send" id="sendAlert">Send Alert</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Required Modal -->
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Authentication Required</h3>
+                <button class="modal-close" id="closeAuthModal">&times;</button>
+            </div>
+            <div class="auth-content">
+                <i class="fas fa-lock"></i>
+                <h4>Please log in to send alerts</h4>
+                <p>You need to be signed in to contact pet owners.</p>
+                <a href="/profile" class="btn-login">Go to Login</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

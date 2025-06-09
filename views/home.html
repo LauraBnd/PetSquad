@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PetSquad - Your Pet Finding Community</title>
+    <link rel="stylesheet" href="/css/home.css" >
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    >
+    <script src="/js/home.js"></script>
+  </head>
+  <body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+      <i class="fas fa-paw"></i>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+      <div class="logo">
+        <img src="/images/pupsqd.png" alt="PetSquad Logo" class="logo-img" >
+        <span class="logo-text">PetSquad</span>
+      </div>
+
+      <ul class="nav-menu">
+        <li class="nav-item active">
+          <a href="/" class="nav-link">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/feed" class="nav-link">
+            <i class="fas fa-search"></i>
+            <span>Feed</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a href="/petsquad" class="nav-link">
+            <i class="fas fa-robot"></i>
+            <span>PetSquad AI</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/profile" class="nav-link">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </a>
+        </li>
+      </ul>
+      <div class="nav-footer">
+        <p class="footer-text">
+          Contact us at:
+        </p>
+        <div class="navfooter-item">
+          <i class="fas fa-envelope"></i>
+          <span>pet_squad@yahoo.com</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (123) 456-7890</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Iasi, Romania</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fab fa-instagram"></i>
+          <span>@PetSquad</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+ 
+      <section class="hero">
+        <div class="hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              Welcome to PetSquad <i class="fas fa-paw paw-icon"></i>!
+            </h1>
+            <p class="hero-description">
+              Your community for finding lost pets and reuniting furry friends
+              with their families. Post, search and let our AI tool give you a
+              paw in finding your best friend. Your companion might be lost, but
+              you don't have to be! Here are some short descriptions of our
+              PetSquad's abilities:
+            </p>
+          </div>
+          <div class="hero-image">
+            <img
+              src="/images/flying-dog.gif"
+              alt="Happy pets"
+              class="hero-img"
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section -->
+      <section class="features">
+
+        <div class="feature-card found-card">
+          <div class="feature-icon">
+            <img
+              src="/images/found.gif"
+              alt="Lost Icon"
+              class="feature-gif"
+            >
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">Feed</h3>
+            <p class="feature-description">
+              Lost your pet or found a wandering pet? Post a detailed alert with photos and the last seen
+              location. Our community will help spread the word and find matches
+              fast.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card ai-card">
+         <div class="feature-icon">
+            <img
+              src="/images/detect.gif"
+              alt="Lost Icon"
+              class="feature-gif"
+            >
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">PetSquad AI</h3>
+            <p class="feature-description">
+              Meet our smart assistant! PetSquad compares photos and traits
+              using AI to help match lost pets with found reports. Upload a
+              photo and let our team do the sniffing.
+            </p>
+          </div>
+        </div>
+
+        <div class="feature-card profile-card">
+          <div class="feature-icon">
+            <img
+              src="/images/profile.gif"
+              alt="Lost Icon"
+              class="feature-gif"
+            >
+          </div>
+          <div class="feature-content">
+            <h3 class="feature-title">Profile</h3>
+            <p class="feature-description">
+              Manage your posts and see your pet's status. Stay updated with
+              notifications about possible matches and messages from other
+              users.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="cta-content">
+          <h2 class="cta-title">Ready to Help Reunite Families?</h2>
+          <p class="cta-description">
+            Join our community and start making a difference today!
+          </p>
+          <div class="cta-buttons">
+            <a href="/feed" class="btn btn-primary">Browse Lost Pets</a>
+            <a href="/profile" class="btn btn-secondary">Get Started</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="overlay" id="overlay"></div>
+
+  </body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - PetSquad</title>
+    <link rel="stylesheet" href="/css/admin.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/js/admin.js"></script>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-paw"></i>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="/images/pupsqd.png" alt="PetSquad Logo" class="logo-img">
+            <span class="logo-text">PetSquad</span>
+            <span class="admin-badge">ADMIN</span>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/feed" class="nav-link">
+                    <i class="fas fa-search"></i>
+                    <span>Feed</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/petsquad" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>PetSquad AI</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="/admin" class="nav-link">
+                    <i class="fas fa-cog"></i>
+                    <span>Admin Panel</span>
+                </a>
+            </li>
+        </ul>
+          <div class="nav-footer">
+        <p class="footer-text">
+          Contact us at:
+        </p>
+        <div class="navfooter-item">
+          <i class="fas fa-envelope"></i>
+          <span>pet_squad@yahoo.com</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (123) 456-7890</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Iasi, Romania</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fab fa-instagram"></i>
+          <span>@PetSquad</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header -->
+        <div class="admin-header">
+            <h1><i class="fas fa-shield-alt"></i> Admin Dashboard</h1>
+            <div class="admin-actions">
+                <button class="logout-btn" id="adminLogout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+
+        <!-- PetSquad Victories -->
+        <div class="victories-card">
+            <h2>🏆 PetSquad Victories</h2>
+            <div class="victory-count" id="victoryCount">0</div>
+            <p>Pets successfully reunited with their families</p>
+        </div>
+
+        <!-- Dashboard Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Users</h3>
+                    <div class="stat-number" id="totalUsers">0</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Total Posts</h3>
+                    <div class="stat-number" id="totalPosts">0</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Active Posts</h3>
+                    <div class="stat-number" id="activePosts">0</div>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="stat-content">
+                    <h3>Solved Posts</h3>
+                    <div class="stat-number" id="solvedPosts">0</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Management Sections -->
+        <div class="management-sections">
+            <!-- User Management -->
+            <section class="management-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-users"></i> User Management</h2>
+                    <div class="search-container">
+                        <input type="text" id="userSearch" placeholder="Search users by email, username...">
+                        <button class="search-btn" id="searchUsersBtn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="admin-table" id="usersTable">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Username</th>
+                                <th>Email</th>
+                                <th>Full Name</th>
+                                <th>Phone</th>
+                                <th>Created</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Users will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Post Management -->
+            <section class="management-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-newspaper"></i> Post Management</h2>
+                    <div class="post-filters">
+                        <select id="postTagFilter">
+                            <option value="">All Tags</option>
+                            <option value="lost">Lost</option>
+                            <option value="found">Found</option>
+                        </select>
+                        <input type="text" id="postSearch" placeholder="Search posts by content, location...">
+                        <button class="search-btn" id="searchPostsBtn">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="posts-grid" id="postsGrid">
+                    <!-- Posts will be loaded here -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Edit User Modal -->
+    <div class="modal" id="editUserModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit User</h3>
+                <button class="modal-close" id="closeEditUserModal">&times;</button>
+            </div>
+            <form class="edit-form" id="editUserForm">
+                <input type="hidden" id="editUserId">
+                <div class="form-group">
+                    <label for="editUserUsername">Username</label>
+                    <input type="text" id="editUserUsername" name="username" required>
+                </div>
+                <div class="form-group">
+                    <label for="editUserEmail">Email</label>
+                    <input type="email" id="editUserEmail" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="editUserFullName">Full Name</label>
+                    <input type="text" id="editUserFullName" name="fullName">
+                </div>
+                <div class="form-group">
+                    <label for="editUserPhone">Phone Number</label>
+                    <input type="tel" id="editUserPhone" name="phoneNumber">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="cancelEditUser">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Post Modal -->
+    <div class="modal" id="editPostModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Edit Post</h3>
+                <button class="modal-close" id="closeEditPostModal">&times;</button>
+            </div>
+            <form class="edit-form" id="editPostForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Tag</label>
+                    <div class="tag-selector">
+                        <label class="tag-option lost">
+                            <input type="radio" name="tag" value="lost" required>
+                            <span class="tag-label">
+                                <i class="fas fa-search"></i>
+                                Lost
+                            </span>
+                        </label>
+                        <label class="tag-option found">
+                            <input type="radio" name="tag" value="found" required>
+                            <span class="tag-label">
+                                <i class="fas fa-heart"></i>
+                                Found
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="adminEditPetNameGroup">
+                    <label for="adminEditPetName">Pet Name</label>
+                    <input type="text" id="adminEditPetName" name="petName" placeholder="What's the pet's name?">
+                </div>
+
+                <div class="form-group">
+                    <label for="adminEditLocation">Last Seen Location *</label>
+                    <input type="text" id="adminEditLocation" name="location" placeholder="Where was the pet last seen?" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="adminEditDate">Date *</label>
+                        <input type="date" id="adminEditDate" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="adminEditSize">Size *</label>
+                        <select id="adminEditSize" name="size" required>
+                            <option value="">Select size</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="adminEditBreed">Breed (Optional)</label>
+                    <input type="text" id="adminEditBreed" name="breed" placeholder="e.g. Golden Retriever, Mixed breed">
+                </div>
+
+                <div class="form-group">
+                    <label for="adminEditDescription">Description (Optional)</label>
+                    <textarea id="adminEditDescription" name="description" rows="4" placeholder="Any additional details that might help..."></textarea>
+                </div>
+
+                <!-- Admin specific controls -->
+                <div class="form-group admin-controls">
+                    <label>Post Status</label>
+                    <div class="status-controls">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="adminMarkSolved" name="markSolved">
+                            <span class="checkmark"></span>
+                            Mark as Solved
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Current Images Section -->
+                <div class="form-group">
+                    <label>Current Images</label>
+                    <div class="current-images" id="adminCurrentImagesEdit">
+                        <!-- Current images will be displayed here -->
+                    </div>
+                </div>
+
+                <!-- Add New Images Section -->
+                <div class="form-group">
+                    <label for="adminEditImages">Add New Photos</label>
+                    <div class="image-upload">
+                        <input type="file" id="adminEditImages" name="images" multiple accept="image/*" style="display: none;">
+                        <div class="upload-area" id="adminEditUploadArea">
+                            <i class="fas fa-camera"></i>
+                            <p>Click to upload photos or drag and drop</p>
+                            <small>Up to 5 images (max 5MB each)</small>
+                        </div>
+                        <div class="image-preview" id="adminEditImagePreview"></div>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="cancelEditPost">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header danger">
+                <h3>Confirm Deletion</h3>
+                <button class="modal-close" id="closeDeleteModal">&times;</button>
+            </div>
+            <div class="delete-content">
+                <i class="fas fa-exclamation-triangle"></i>
+                <h4>Are you sure?</h4>
+                <p id="deleteMessage">This action cannot be undone.</p>
+                <div class="modal-buttons">
+                    <button class="btn-cancel" id="cancelDelete">Cancel</button>
+                    <button class="btn-delete" id="confirmDelete">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Post Detail Modal -->
+    <div class="modal" id="postDetailModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h3>Post Details</h3>
+                <button class="modal-close" id="closePostDetailModal">&times;</button>
+            </div>
+            <div class="post-detail-content">
+                <div class="post-images" id="modalPostImages">
+                    <!-- Images will be loaded here -->
+                </div>
+                <div class="post-info">
+                    <h4 id="modalPostTitle">Pet Name</h4>
+                    <div class="post-meta">
+                        <span class="post-tag" id="modalPostTag">lost</span>
+                        <span class="post-date" id="modalPostDate">Date</span>
+                    </div>
+                    <div class="post-details">
+                        <p><strong>Owner:</strong> <span id="modalPostOwner">Username</span></p>
+                        <p><strong>Location:</strong> <span id="modalPostLocation">Location</span></p>
+                        <p><strong>Breed:</strong> <span id="modalPostBreed">Breed</span></p>
+                        <p><strong>Size:</strong> <span id="modalPostSize">Size</span></p>
+                        <p><strong>Description:</strong> <span id="modalPostDescription">Description</span></p>
+                        <p><strong>Status:</strong> <span id="modalPostStatus">Active</span></p>
+                    </div>
+                    <div class="modal-buttons">
+                        <button class="btn-edit" id="editPostBtn">Edit Post</button>
+                        <button class="btn-delete" id="deletePostBtn">Delete Post</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading...</p>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+</body>
+</html>

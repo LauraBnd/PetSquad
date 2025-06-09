@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feed - PetSquad</title>
+    <link rel="stylesheet" href="/css/feed.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="/js/feed.js"></script>
+</head>
+<body>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle">
+        <i class="fas fa-paw"></i>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="/images/pupsqd.png" alt="PetSquad Logo" class="logo-img">
+            <span class="logo-text">PetSquad</span>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="/" class="nav-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+            </li>
+            <li class="nav-item active">
+                <a href="/feed" class="nav-link">
+                    <i class="fas fa-search"></i>
+                    <span>Feed</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/petsquad" class="nav-link">
+                    <i class="fas fa-robot"></i>
+                    <span>PetSquad AI</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/profile" class="nav-link">
+                    <i class="fas fa-user"></i>
+                    <span>Profile</span>
+                </a>
+            </li>
+        </ul>
+          <div class="nav-footer">
+        <p class="footer-text">
+          Contact us at:
+        </p>
+        <div class="navfooter-item">
+          <i class="fas fa-envelope"></i>
+          <span>pet_squad@yahoo.com</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-phone"></i>
+          <span>+1 (123) 456-7890</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Iasi, Romania</span>
+        </div>
+        <div class="navfooter-item">
+          <i class="fab fa-instagram"></i>
+          <span>@PetSquad</span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Header Actions -->
+        <div class="header-actions">
+            <button class="action-btn primary" id="makePostBtn">
+                <i class="fas fa-plus"></i>
+                Make a Post
+            </button>
+            <button class="action-btn secondary" id="searchBtn">
+                <i class="fas fa-search"></i>
+                Search
+            </button>
+        </div>
+
+        <!-- Search Panel -->
+        <div class="search-panel" id="searchPanel">
+            <div class="search-content">
+                <h3>Search Filters</h3>
+                <form class="search-form" id="searchForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="tagFilter">Tag</label>
+                            <select id="tagFilter" name="tag">
+                                <option value="">All</option>
+                                <option value="lost">Lost</option>
+                                <option value="found">Found</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="sizeFilter">Size</label>
+                            <select id="sizeFilter" name="size">
+                                <option value="">All</option>
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="breedFilter">Breed</label>
+                            <input type="text" id="breedFilter" name="breed" placeholder="e.g. Golden Retriever">
+                        </div>
+                        <div class="form-group">
+                            <label for="startingFromFilter">Starting From</label>
+                            <input type="date" id="startingFromFilter" name="startingFrom">
+                        </div>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="keywordsFilter">Keywords</label>
+                        <input type="text" id="keywordsFilter" name="keywords" placeholder="Search in description, location, pet name...">
+                    </div>
+                    <div class="search-actions">
+                        <button type="button" class="btn-clear" id="clearFilters">Clear All</button>
+                        <button type="submit" class="btn-apply">Apply Filters</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Posts Feed -->
+        <div class="posts-container">
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading posts...</p>
+            </div>
+            <div class="posts-grid" id="postsGrid">
+                <!-- Posts will be loaded here -->
+            </div>
+            <div class="no-posts" id="noPosts" style="display: none;">
+                <i class="fas fa-heart-broken"></i>
+                <h3>No posts found</h3>
+                <p>Try adjusting your search filters or be the first to post!</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Make Post Modal -->
+    <div class="modal" id="makePostModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Make a Post</h3>
+                <button class="modal-close" id="closePostModal">&times;</button>
+            </div>
+            <form class="post-form" id="postForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Tag</label>
+                    <div class="tag-selector">
+                        <label class="tag-option lost">
+                            <input type="radio" name="tag" value="lost" required>
+                            <span class="tag-label">
+                                <i class="fas fa-search"></i>
+                                Lost
+                            </span>
+                        </label>
+                        <label class="tag-option found">
+                            <input type="radio" name="tag" value="found" required>
+                            <span class="tag-label">
+                                <i class="fas fa-heart"></i>
+                                Found
+                            </span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group" id="petNameGroup">
+                    <label for="petName">Pet Name</label>
+                    <input type="text" id="petName" name="petName" placeholder="What's your pet's name?">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Last Seen Location *</label>
+                    <input type="text" id="location" name="location" placeholder="Where was the pet last seen?" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="date">Date *</label>
+                        <input type="date" id="date" name="date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="size">Size *</label>
+                        <select id="size" name="size" required>
+                            <option value="">Select size</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="breed">Breed (Optional)</label>
+                    <input type="text" id="breed" name="breed" placeholder="e.g. Golden Retriever, Mixed breed">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description (Optional)</label>
+                    <textarea id="description" name="description" rows="4" placeholder="Any additional details that might help..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Photos</label>
+                    <div class="image-upload">
+                        <input type="file" id="images" name="images" multiple accept="image/*" style="display: none;">
+                        <div class="upload-area" id="uploadArea">
+                            <i class="fas fa-camera"></i>
+                            <p>Click to upload photos or drag and drop</p>
+                            <small>Up to 5 images (max 5MB each)</small>
+                        </div>
+                        <div class="image-preview" id="imagePreview"></div>
+                    </div>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="button" class="btn-cancel" id="cancelPost">Cancel</button>
+                    <button type="submit" class="btn-post">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Auth Required Modal -->
+    <div class="modal" id="authRequiredModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Authentication Required</h3>
+                <button class="modal-close" id="closeAuthModal">&times;</button>
+            </div>
+            <div class="auth-content">
+                <i class="fas fa-lock"></i>
+                <h4>Please log in to make a post</h4>
+                <p>You need to be signed in to help reunite pets with their families.</p>
+                <div class="auth-buttons">
+                    <a href="/profile" class="btn-login">Go to Login</a>
+                    <button class="btn-cancel" id="closeAuthBtn">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+</body>
+</html>

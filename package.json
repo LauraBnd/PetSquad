@@ -1,0 +1,32 @@
+{
+  "name": "petsquad",
+  "version": "1.0.0",
+  "description": "Pet finding community platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "dotenv": "^16.5.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^6.11.2",
+    "express-session": "^1.18.1",
+    "helmet": "^7.2.0",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "keywords": [
+    "pets",
+    "community",
+    "lost",
+    "found"
+  ],
+  "author": "PetSquad Team",
+  "license": "MIT"
+}
